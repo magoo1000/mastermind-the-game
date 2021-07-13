@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mastermind App</title>
+        <link rel='stylesheet' href='style.css'>
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Orelega+One&display=swap" rel="stylesheet">
+        <script src='index.js'></script>
+    </head>
+    <body>
+        <div id='homePage'>
+            <div id='htp'>
+                <button id='howToPlay' onclick='homeAbout()'>How to Play</button>
+            </div>
+            <div id='startButtons'>
+                <button class='gameButtons' id='vsPlayer' onclick='playerGame()'>
+                    Vs. Player
+                </button>
+                <button class='gameButtons' id='vsComputer' onclick='computerGame()'>
+                    Vs. Computer
+                </button>
+            </div>
+        </div>
+
+        <div id='aboutTheGame' style='display: none'>
+            <h1 style='font-size: 3em; text-align: center;'>How to Play:</h1>
+            <div id='theGame'>
+                <h2>The Game:</h2>
+                <h4>
+                    If you choose 'Vs. Player', you will be competing against a friend.  First, your friend will create a code of 4 colors 
+                    to fill in the 4 big empty circles.  DON'T PEAK CHEATER.  Once all of the circles are filled, and 
+                    your friend clicks the 'Create Code' button, it is your turn.  If you hit 'Vs. Computer', the code will have
+                    already been created for you.  Now, you have 10 attempts to guess the code your 
+                    friend or the computer has just made.  Remember, the same color can be used more than once.  When you fill the big circles 
+                    with your guess, hit 'Submit', and your attempt will be stored in the column to the right for reference.
+                </h4>
+            </div>
+            <div id='theFeedback'>
+                <h2>Feedback:</h2>
+                <h4><i>Black Dot:</i> Correct color in the correct spot.</h4>
+                <h4><i>White Dot:</i> Correct color in the incorrect spot.</h4>
+                <h4><i>Empty Dot:</i> You're sh!t out of luck and it's the wrong color completely.</h4>
+                <h4><i>Reminder:</i> The feedback dots are in no particular order.</h4>
+                <h4>For example, just because you get a black dot in the first circle
+                    does not mean that the first circle of your code is correct.
+                </h4>
+                <div id='aboutButtons'>
+                    <button id='backToHome' onclick='backToHomepage()'>Back to Home</button>
+                    <button id='backToGame' onclick='backToGame()' style='display: none'>Back to Game</button>
+                </div>
+            </div>
+        </div>
+
+        <div id='gameBody' style='display: none'>
+            <div id='leftSide'>
+                <h1>Welcome to Mastermind</h1>
+                <div id='choices'>
+                    <h3>These are your choices:</h3>
+                    <div style='background: red' class='dot' onclick='chooseCol("red")'></div>
+                    <div style='background: orange' class='dot' onclick='chooseCol("orange")'></div>
+                    <div style='background: yellow' class='dot' onclick='chooseCol("yellow")'></div>
+                    <div style='background: green' class='dot' onclick='chooseCol("green")'></div>
+                    <div style='background: blue' class='dot' onclick='chooseCol("blue")'></div>
+                    <div style='background: purple' class='dot' onclick='chooseCol("purple")'></div>
+                </div>
+
+                <div id='code' style='display: none'>
+                    <h3>This is the answer:</h3>
+                    <div class='dot' id='code0'></div>
+                    <div class='dot' id='code1'></div>
+                    <div class='dot' id='code2'></div>
+                    <div class='dot' id='code3'></div>
+                </div>
+
+                <div id='playerCode' style='display: none'>
+                    <h3 id='playerCodeText'>This is your code:</h3>
+                    <div class='dot' id='playerCode0' onclick='chooseDot("playerCode0")'></div>
+                    <div class='dot' id='playerCode1' onclick='chooseDot("playerCode1")'></div>
+                    <div class='dot' id='playerCode2' onclick='chooseDot("playerCode2")'></div>
+                    <div class='dot' id='playerCode3' onclick='chooseDot("playerCode3")'></div>
+                    <br>
+                    <button class='interactButtons' id='playerCodeButton' onclick='playerCodeCreated()'>
+                        Create Code
+                    </button>
+                </div>
+
+                <div id='guesses' style='display: none'>
+                    <h3 id='guessDotText'>This is your guess:</h3>
+                    <div class='dot' id='choice0' onclick='chooseDot("choice0")'></div>
+                    <div class='dot' id='choice1' onclick='chooseDot("choice1")'></div>
+                    <div class='dot' id='choice2' onclick='chooseDot("choice2")'></div>
+                    <div class='dot' id='choice3' onclick='chooseDot("choice3")'></div>
+                </div>
+
+                <button class='interactButtons' id='submit' onclick='submission()'>
+                    Submit
+                </button>
+                <div id='cornerButtons'>
+                    <button class='interactButtons' onclick='gameAbout()' style='margin-bottom: .5em'>
+                        Rules
+                    </button>
+                    <button class='interactButtons' onclick='restart()'>
+                        Restart
+                    </button>
+                </div>
+            </div>
+            
+            <div id='finalResult'>
+                <h1 id='outcome' style='font-size: 7em'></h1>
+                <button class='interactButtons' onclick='restart()'>Restart</button>
+            </div>
+
+            <div id='warning'>
+                <h2 style='text-align: center'>Choose all dots fool</h2>
+            </div>
+            
+            <div id='attempts'>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot00'></div>
+                        <div class='attemptDots' id='attemptDot01'></div>
+                        <div class='attemptDots' id='attemptDot02'></div>
+                        <div class='attemptDots' id='attemptDot03'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback00'></div>
+                        <div class='feedback' id='feedback01'></div>
+                        <div class='feedback' id='feedback02'></div>
+                        <div class='feedback' id='feedback03'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot10'></div>
+                        <div class='attemptDots' id='attemptDot11'></div>
+                        <div class='attemptDots' id='attemptDot12'></div>
+                        <div class='attemptDots' id='attemptDot13'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback10'></div>
+                        <div class='feedback' id='feedback11'></div>
+                        <div class='feedback' id='feedback12'></div>
+                        <div class='feedback' id='feedback13'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot20'></div>
+                        <div class='attemptDots' id='attemptDot21'></div>
+                        <div class='attemptDots' id='attemptDot22'></div>
+                        <div class='attemptDots' id='attemptDot23'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback20'></div>
+                        <div class='feedback' id='feedback21'></div>
+                        <div class='feedback' id='feedback22'></div>
+                        <div class='feedback' id='feedback23'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot30'></div>
+                        <div class='attemptDots' id='attemptDot31'></div>
+                        <div class='attemptDots' id='attemptDot32'></div>
+                        <div class='attemptDots' id='attemptDot33'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback30'></div>
+                        <div class='feedback' id='feedback31'></div>
+                        <div class='feedback' id='feedback32'></div>
+                        <div class='feedback' id='feedback33'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot40'></div>
+                        <div class='attemptDots' id='attemptDot41'></div>
+                        <div class='attemptDots' id='attemptDot42'></div>
+                        <div class='attemptDots' id='attemptDot43'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback40'></div>
+                        <div class='feedback' id='feedback41'></div>
+                        <div class='feedback' id='feedback42'></div>
+                        <div class='feedback' id='feedback43'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot50'></div>
+                        <div class='attemptDots' id='attemptDot51'></div>
+                        <div class='attemptDots' id='attemptDot52'></div>
+                        <div class='attemptDots' id='attemptDot53'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback50'></div>
+                        <div class='feedback' id='feedback51'></div>
+                        <div class='feedback' id='feedback52'></div>
+                        <div class='feedback' id='feedback53'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot60'></div>
+                        <div class='attemptDots' id='attemptDot61'></div>
+                        <div class='attemptDots' id='attemptDot62'></div>
+                        <div class='attemptDots' id='attemptDot63'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback60'></div>
+                        <div class='feedback' id='feedback61'></div>
+                        <div class='feedback' id='feedback62'></div>
+                        <div class='feedback' id='feedback63'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot70'></div>
+                        <div class='attemptDots' id='attemptDot71'></div>
+                        <div class='attemptDots' id='attemptDot72'></div>
+                        <div class='attemptDots' id='attemptDot73'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback70'></div>
+                        <div class='feedback' id='feedback71'></div>
+                        <div class='feedback' id='feedback72'></div>
+                        <div class='feedback' id='feedback73'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot80'></div>
+                        <div class='attemptDots' id='attemptDot81'></div>
+                        <div class='attemptDots' id='attemptDot82'></div>
+                        <div class='attemptDots' id='attemptDot83'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback80'></div>
+                        <div class='feedback' id='feedback81'></div>
+                        <div class='feedback' id='feedback82'></div>
+                        <div class='feedback' id='feedback83'></div>
+                    </div>
+                </div>
+                <br>
+                <div id='attempt'>
+                    <div class='attemptBox'>
+                        <div class='attemptDots' id='attemptDot90'></div>
+                        <div class='attemptDots' id='attemptDot91'></div>
+                        <div class='attemptDots' id='attemptDot92'></div>
+                        <div class='attemptDots' id='attemptDot93'></div>
+                    </div>
+                    <div id='feedback'>
+                        <div class='feedback' id='feedback90'></div>
+                        <div class='feedback' id='feedback91'></div>
+                        <div class='feedback' id='feedback92'></div>
+                        <div class='feedback' id='feedback93'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

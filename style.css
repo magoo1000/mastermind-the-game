@@ -1,0 +1,246 @@
+body {
+  background-color:darkslategray;
+}
+
+#vsPlayer {
+  margin-right: 0;
+}
+
+#startButtons {
+  text-align: center;
+  display: inline-flex;
+  width: 100%;
+  margin-top: 2em;
+}
+
+#htp {
+  text-align: center;
+  display: inline-flex;
+  width: 100%;
+}
+
+#howToPlay {
+  margin: auto;
+  margin-top: .5em;
+  height: 1.8em;
+  width: 50%;
+  border: 5px solid white;
+  border-radius: 25%;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-size: 2.8em;
+  letter-spacing: 1px;
+  font-family: 'Lobster', cursive;
+}
+
+#howToPlay:hover, #backToHome:hover, #backToGame:hover, .gameButtons:hover, .interactButtons:hover {
+  background-color: #1c2f2f;
+}
+
+#aboutTheGame {
+  background-color: darkslategray;
+  text-align: center;
+  position: fixed;
+  width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2f4f3f;
+  border: 5px solid white;
+  border-radius: 10%;
+  padding: 5px;
+}
+
+#theGame {
+  text-align: center;
+  float: left;
+  width: 50%;
+}
+
+#theFeedback {
+  text-align: center;
+  float: right;
+  width: 50%;
+}
+
+#aboutButtons {
+  display: inline-flex;
+}
+
+#backToHome {
+  margin: .4em;
+  height: 2em;
+  border: 3px solid white;
+  border-radius: 25%;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  font-family: 'Lobster', cursive;
+}
+
+#backToGame {
+  margin: .4em;
+  height: 2em;
+  border: 3px solid white;
+  border-radius: 25%;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  font-family: 'Lobster', cursive;
+}
+
+.gameButtons {
+  width: 40%;
+  height: 4em;
+  margin: auto;
+  border: 5px solid white;
+  border-radius: 25%;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-size: 4.5em;
+  font-family: 'Lobster', cursive;
+}
+
+#warning {
+  text-align: center;
+  position: fixed;
+  width: 30em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2f4f3f;
+  border: 3px solid white;
+  border-radius: 25%;
+  padding: 30px;
+}
+
+h1 {
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 3.5em;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: white;
+  font-family: 'Alegreya Sans', sans-serif;
+  letter-spacing: 1px;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+h3 {
+  color: white;
+  font-family: 'Alegreya Sans', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+h4 {
+  color: white;
+  font-family: 'Alegreya Sans', sans-serif;
+  text-align: justify;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+  font-size: 1em;
+  margin: .5em 1.4em;
+}
+
+.interactButtons {
+  display: block;
+  border: 3px solid white;
+  border-radius: 25%;
+  background: none;
+  cursor: pointer;
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 2em;
+  margin: 0 auto;
+  padding: .2em .5em .2em .5em;
+}
+
+#cornerButtons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: .8em;
+}
+
+.dot {
+  border: 3.5px solid white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  display: inline-flex;
+  margin: 1em;
+  cursor: pointer;
+}
+
+#leftSide {
+  float: left;
+  position: absolute;
+  text-align: center;
+  width: 75%;
+}
+
+#attempts {
+  position: fixed;
+  right: 1em;
+  height: 100%;
+  width: 25%;
+  margin-right: 10px;
+}
+
+#attempt {
+  display: inline-flex;
+  vertical-align: middle;
+  height: 9.8%;
+}
+
+.attemptBox {
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.attemptDots {
+  border: 2px solid white;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin: .1em;
+}
+
+#feedback {
+  display: flex;
+  align-items: center;
+}
+
+.feedback {
+  border: 2px solid white;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: inline-flex;
+  margin: .1em;
+}
+
+#finalResult {
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 43%;
+  transform: translate(-50%, -50%);
+  background-color: #2f4f3f;
+  border: 4px solid white;
+  border-radius: 25%;
+  padding-bottom: 3em;
+}
